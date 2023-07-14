@@ -1,32 +1,29 @@
-const container = document.getElementById('certificates');
-const input = document.getElementById('search');
+"use strict";
 
-function pushIntoDOM (array) {
+var container = document.getElementById('certificates');
+var input = document.getElementById('search');
+function pushIntoDOM(array) {
   container.innerHTML = '';
-  array.forEach((item) => {
-    const div = document.createElement('div');
-    const a = document.createElement('a');
+  array.forEach(function (item) {
+    var div = document.createElement('div');
+    var a = document.createElement('a');
     div.className = 'certificate';
     a.className = 'certificate_title';
     a.href = './assets/' + item + '.pdf';
     a.target = '_blank';
     a.innerHTML = item;
-    a.download = true
+    a.download = true;
     div.appendChild(a);
     container.appendChild(div);
   });
 }
-
-input.addEventListener('keyup', (e) => {
-  const value = e.target.value;
-  const filtered = names.filter((item) => {
+input.addEventListener('keyup', function (e) {
+  var value = e.target.value;
+  var filtered = names.filter(function (item) {
     return item.toLowerCase().includes(value.toLowerCase());
   });
   pushIntoDOM(filtered);
 });
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   pushIntoDOM(names);
 });
-
-
